@@ -1,6 +1,8 @@
+const { signUpSchema, loginSchema } = require("./auth.validation");
+
 const signup = async (req, res) => {
   try {
-    const { username, email, password } = req.body;
+    const vaildationData = signUpSchema.parse(req.body);
 
     return res.status(201).json({
       success: true,
@@ -18,7 +20,7 @@ const signup = async (req, res) => {
 
 const login = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const vaildationData = loginSchema.parse(req.body);
 
     return res.status(201).json({
       success: true,
